@@ -16,9 +16,6 @@ function Liquidity() {
   const [amount, setAmount] = useState('');
   const [liquidityAmount, setLiquidityAmount] = useState('');
 
-  const addLiquidit1y = () => {
-      setLiquidityAmount(amount);  // Set the liquidity amount to the entered value
-  };
 
 const addLiquidity = () => {
     const enteredAmount = parseInt(amount); // Parse the entered amount to an integer
@@ -42,25 +39,6 @@ const addLiquidity = () => {
     setLiquidityAmount(`Add to seleted liquidity pools ${amount} K USD`); // Optionally update RWALiquidity if needed
 };
 
-
-const addLiquiditxxy = () => {
-    const newHouse = { name: 'House6', liquidity: '50K' };
-    setHouseData(prevHouseData => {
-        const updatedHouses = prevHouseData.map(house => {
-            return house;
-        });
-        return [...updatedHouses, newHouse];
-    });
-
-    const houseDetails = selectedHouses.map(house => {
-        const houseDataEntry = houseData.find(h => h.name === house.name);
-        // Correct usage to display house details from houseDataEntry
-        return houseDataEntry ? `${house.name} (${houseDataEntry.liquidity})` : "";
-    }).join(', ');
-
-    const combinedDetails =  `Add to selected liquidity pools ${amount} K USDC`;
-    setLiquidityAmount(combinedDetails);
-};
  
 console.log("li= ", liquidityAmount)
   const [houseData, setHouseData] = useState([
