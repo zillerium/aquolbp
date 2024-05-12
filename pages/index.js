@@ -1,47 +1,37 @@
-import React, { useState, useContext } from "react";
-import { Container, Card, Row, Col, Button, Image } from "react-bootstrap";
-import { ListGroup, Tab } from 'react-bootstrap';
-import Head from 'next/head';
-
-
-import { WagmiConfig } from "wagmi";
-import { WalletContext } from "../lib/WalletContext";
-import RegisterComponent from "./RegisterComponent";
-import config from "../wagmi/wagmiConfignew";
-import WalletControls from "../components/WalletControls";
-import UserDetails from "../components/UserDetails";
-import AssetManager from "../components/AssetManager";
-import WalletDetails from "../components/WalletDetails";
-import contractABI from "../lib/contractABI.json";
-import ReadContractComponent from "./ReadContractComponent";
-import contractData from "../lib/contractAddress.json";
-import DeFiBuildingBlocks from '../components/DeFiBuildingBlocks'; // Adjust the path as per your directory structure
-import AquoIntro from '../components/AquoIntro';
-import TokenizeAssets from '../components/TokenizeAssets'; // Adjust the path as per your directory structure
-import LiquidityVoting from '../components/LiquidityVoting'; // Adjust the path as per your directory structure
-import AssetDerivatives from '../components/AssetDerivatives'; // Adjust the path as per your directory structure
-import TradeDerivatives from '../components/TradeDerivatives'; // Adjust the import path based on your directory structure
-
-const contractAddress = contractData.address;
-
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import YouTube from 'react-youtube'; // Import YouTube component
+import AquoIntro from '../components/AquoIntro'; // Adjust the path as per your directory structure
 
 function Home() {
+    // YouTube video options
+    const opts = {
+        height: '390',
+        width: '640',
+        playerVars: {
+            autoplay: 0,  // Prevent auto-play to adhere to browser policies
+        },
+    };
 
-	const { userAddress, setUserAddress } = useContext(WalletContext);
-
-  const updateUserDetails = (newUserDetails) => {
-    setUserDetails(newUserDetails);
-  };
-
-return (
- <div className="contentArea">
-      <AquoIntro />
-
-
-</div>
-);
-
-
+    return (
+        <Container className="mt-5">
+            <Row className="justify-content-center">
+                <Col xs={12}>
+                    <AquoIntro />
+                </Col>
+            </Row>
+            <Row className="justify-content-center">
+                <Col md={8} className="d-flex justify-content-center">
+                    {/* YouTube video embed, centered */}
+                    <YouTube
+                        videoId="v_UjJ9Lsj1Y" // YouTube Video ID
+                        opts={opts}         // Options for the player
+                    />
+                </Col>
+            </Row>
+        </Container>
+    );
 }
 
 export default Home;
+
