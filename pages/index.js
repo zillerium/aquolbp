@@ -16,6 +16,7 @@ import contractABI from "../lib/contractABI.json";
 import ReadContractComponent from "./ReadContractComponent";
 import contractData from "../lib/contractAddress.json";
 import DeFiBuildingBlocks from '../components/DeFiBuildingBlocks'; // Adjust the path as per your directory structure
+import AquoIntro from '../components/AquoIntro';
 import TokenizeAssets from '../components/TokenizeAssets'; // Adjust the path as per your directory structure
 import LiquidityVoting from '../components/LiquidityVoting'; // Adjust the path as per your directory structure
 import AssetDerivatives from '../components/AssetDerivatives'; // Adjust the path as per your directory structure
@@ -34,11 +35,7 @@ function Home() {
 
 return (
  <div className="contentArea">
-      <DeFiBuildingBlocks />
-<TokenizeAssets />
-<LiquidityVoting />
-<AssetDerivatives />
-      <TradeDerivatives />
+      <AquoIntro />
 
 
 </div>
