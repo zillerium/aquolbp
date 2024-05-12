@@ -1,20 +1,21 @@
 import { useState } from 'react';
 import {Row, Col } from "react-bootstrap";
 
-const HouseList = ({ houses }) => {
-    // State to track selected houses
-    const [selectedHouses, setSelectedHouses] = useState([]);
+const HouseList = ({ houses, selectedHouses, setSelectedHouses }) => {
 
+    // State to track selected houses
     // Handle click event to toggle selection
+
     const toggleSelection = (house) => {
         setSelectedHouses(prev => {
-            const houseName = house.name; // Use the name property for identification
-            if (prev.includes(houseName)) {
-                // If already selected, remove from selection
-                return prev.filter(h => h !== houseName);
+            // Check if house is already selected
+            const index = prev.findIndex(h => h.name === house.name);
+            if (index > -1) {
+                // Remove the house if it is already selected
+                return prev.filter((_, i) => i !== index);
             } else {
-                // If not selected, add to selection
-                return [...prev, houseName];
+                // Add the house and its liquidity if it is not selected
+                return [...prev, { name: house.name, liquidity: house.liquidity }];
             }
         });
     };
@@ -28,7 +29,7 @@ const HouseList = ({ houses }) => {
                             <li key={house.name} style={{
                                 padding: '8px',
                                 cursor: 'pointer',
-                                backgroundColor: selectedHouses.includes(house.name) ? 'lightblue' : 'transparent'
+					    backgroundColor: selectedHouses.some(h => h.name === house.name) ? 'lightblue' : 'transparent'
                             }} onClick={() => toggleSelection(house)}>
                                 {house.name} ({house.liquidity})
                             </li>
